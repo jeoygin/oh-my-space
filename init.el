@@ -38,18 +38,15 @@ values."
      ;; ----------------------------------------------------------------
      ivy
      helm
-     ;; auto-completion
-     ;; better-defaults
+     auto-completion
+     better-defaults
      emacs-lisp
-     ;; git
-     ;; markdown
-     ;; org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     ;; spell-checking
-     ;; syntax-checking
-     ;; version-control
+     git
+     markdown
+     org
+     c-c++
+     gtags
+     my-common
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -96,7 +93,7 @@ values."
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
-   dotspacemacs-editing-style 'vim
+   dotspacemacs-editing-style 'hybrid
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
@@ -274,6 +271,9 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (setq tramp-ssh-controlmaster-options
+    "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+;;  (setq socks-server '("Default server" "127.0.0.1" 1080 5))
   )
 
 (defun dotspacemacs/user-config ()
@@ -283,6 +283,27 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  ;; Reload changed files automatically
+  (global-auto-revert-mode t)
+
+
+  ;; Display line number:
+  (global-linum-mode 1)
+  (setq linum-format "%4d ")
+
+  ;; Time:
+  (display-time-mode 1)
+
+  ;; Language Environment:
+  (setq current-language-environment "UTF-8")
+  (setq locale-coding-system 'utf-8)
+  (set-terminal-coding-system 'utf-8)
+  (set-keyboard-coding-system 'utf-8)
+  (set-selection-coding-system 'utf-8)
+  (prefer-coding-system 'utf-8)
+
+  (setq js-indent-level 2)
+  (setq-default c-basic-offset 2)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

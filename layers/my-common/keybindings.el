@@ -1,0 +1,10 @@
+(global-set-key (kbd "C-c c") 'copy-to-x-clipboard)
+(global-set-key (kbd "C-c v") 'paste-from-x-clipboard)
+(global-set-key (kbd "C-c y") 'copy-line)
+(global-set-key (kbd "C-c d") 'duplicate-current-line)
+(global-set-key (kbd "C-c k") 'kill-whole-line)
+
+(global-set-key (kbd "M-s e") 'mc/edit-lines)
+(global-set-key (kbd "M-s n") 'mc/mark-next-like-this)
+(global-set-key (kbd "M-s p") 'mc/mark-previous-like-this)
+(global-set-key (kbd "M-s a") 'mc/mark-all-like-this)
